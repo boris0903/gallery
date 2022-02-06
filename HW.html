@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+
+    var CurImg = 0;	
+	var imgMas = document.getElementsByName("myImage[]");
+	var Galery = new Array("images/1.jpg", "images/2.jpg", "images/3.jpg", "images/4.jpg", "images/5.jpg", "images/6.jpg", "images/7.jpg", "images/8.jpg");	
+	
+    function Load() {            				
+            var tmp = 0;
+            for (var i = 0; i < imgMas.length; i++) {				
+                if (tmp >= Galery.length)
+                   tmp = 0;
+                imgMas[i].src = Galery[tmp++];
+            }
+        }
+		
+	function LeftF(){
+		if (CurImg == 0) {
+                CurImg = Galery.length - 1;               
+            } else
+                CurImg--;
+            var tmp = CurImg;
+            for (var i = 0; i < imgMas.length; i++) {                
+                if (tmp >= Galery.length)
+                    tmp = 0;
+                imgMas[i].src = Galery[tmp++];
+            }		
+	}
+	
+	function RightF(){
+		if (CurImg == Galery.length - 1) {
+                CurImg = 0;
+            } else
+                CurImg++;
+            var tmp = CurImg;
+            for (var i = 0; i < imgMas.length; i++) {                
+                if (tmp >= Galery.length)
+                    tmp = 0;
+                imgMas[i].src = Galery[tmp++];
+            }		
+	}	
+	
+        </script>
+</head>
+<body onload="Load()">    
+    <div style="margin-top: 10%"; align="center">
+        <img src="#" name="myImage[]" width="150" height="150" />
+        <img src="#" name="myImage[]" width="150" height="150" />
+        <img src="#" name="myImage[]" width="450" height="350" />
+        <img src="#" name="myImage[]" width="150" height="150" />
+        <img src="#" name="myImage[]" width="150" height="150" />
+    </div>
+	
+	<div align="center">
+        <img src="images/Left.jpg" onclick="LeftF()" width="60" height="60" />
+        <img src="images/Right.jpg" onclick="RightF()" width="60" height="60" />
+    </div>
+    
+</body>
+</html>
